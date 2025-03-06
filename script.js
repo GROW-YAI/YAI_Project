@@ -1,4 +1,3 @@
-
 // Mobile Menu Toggle
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
@@ -62,3 +61,31 @@ document.querySelector('form').addEventListener('submit', function(e) {
         phone.setCustomValidity('');
     }
 });
+
+// Active section tracking
+const sections = document.querySelectorAll('section[id]');
+// const navLinks = document.querySelectorAll('.nav-links a');
+
+function highlightNavLink() {
+    const scrollPosition = window.scrollY + 100; // Offset for better detection
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+            
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+}
+
+// Add scroll event listener
+window.addEventListener('scroll', highlightNavLink);
+// Run once on page load
+highlightNavLink();
