@@ -28,7 +28,7 @@ body {
     top: 0;
     width: 100%;
     background: var(--primary-blue);
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     z-index: 1000;
     color: var(--white);
 }
@@ -39,11 +39,43 @@ body {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .logo {
-    color: var(--text-light);
-    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+.company-name {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.company-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.5px;
+}
+
+.company-slogan {
+    font-size: 0.8rem;
+    color: var(--light-blue);
+    font-weight: 400;
 }
 
 .nav-links {
@@ -104,7 +136,6 @@ body {
     padding: 4rem 2rem;
 }
 
-
 .hero-content {
     position: relative;
     z-index: 2;
@@ -125,7 +156,7 @@ body {
     color: var(--light-blue);
 }
 
-.cta-button {
+.cta-button  {
     background: var(--secondary-blue);
     color: var(--text-light);
     padding: 1rem 2.5rem;
@@ -147,11 +178,27 @@ body {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
+.cta-button a {
+    text-decoration: none;
+    color: var(--text-light);
+}
+
+.cta-button a:hover {
+    color: var(--primary-blue);
+}
+
 /* Product Sections */
 .section-title {
     text-align: center;
     margin: 4rem 0 2rem;
     color: var(--deep-blue);
+    padding-top: 4rem;
+}
+
+.section-title1 {
+    text-align: center;
+    margin: 4rem 0 2rem;
+    /* color: var(--deep-blue); */
     padding-top: 4rem;
 }
 
@@ -219,7 +266,7 @@ body {
 .profile-img {
     width: 100%;
     border-radius: 20px;
-    max-height: 400px;
+    max-height: 500px;
     object-fit: cover;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     animation: float 6s ease-in-out infinite;
@@ -429,6 +476,10 @@ footer a {
         display: flex;
     }
 
+    .nav-links li {
+        margin: 1rem 0;
+    }
+
     #hero {
         min-height: 60vh;
         padding: 3rem 1rem;
@@ -440,6 +491,22 @@ footer a {
 
     .hero-content p {
         font-size: 1.1rem;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+    
+    .company-title {
+        font-size: 1rem;
+    }
+    
+    .company-slogan {
+        font-size: 0.7rem;
+    }
+    
+    .nav-container {
+        padding: 0.5rem;
     }
 }
 
@@ -597,4 +664,51 @@ footer a {
 
 .learn-more-btn:hover i {
     transform: translateX(5px);
+}
+
+.form-message {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    text-align: center;
+    animation: slideIn 0.3s ease;
+}
+
+.form-message.success {
+    background-color: rgba(46, 213, 115, 0.15);
+    color: #2ed573;
+    border: 1px solid #2ed573;
+}
+
+.form-message.error {
+    background-color: rgba(255, 71, 87, 0.15);
+    color: #ff4757;
+    border: 1px solid #ff4757;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* If your logo is too light against the blue background */
+.logo img {
+    filter: brightness(0) invert(1); /* Only add this if you need the logo to be white */
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .company-slogan {
+        display: none; /* Hide slogan on very small screens */
+    }
+    
+    .logo-container {
+        gap: 0.5rem;
+    }
 }
